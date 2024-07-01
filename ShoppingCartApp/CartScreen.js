@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     screenshot:{
         marginLeft:1,
         width: 380,
-        marginTop: -500,
+        marginTop: 0,
     }
 });
 
