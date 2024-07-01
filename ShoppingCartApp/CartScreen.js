@@ -1,6 +1,6 @@
 // CartScreen.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CartScreen = () => {
@@ -39,6 +39,7 @@ const CartScreen = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.product}>
+            <Image source={item.image} style={styles.image} />
             <Text>{item.name} - ${item.price}</Text>
             <Button title="Remove from Cart" onPress={() => removeFromCart(item)} />
           </View>
