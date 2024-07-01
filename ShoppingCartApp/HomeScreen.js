@@ -56,7 +56,19 @@ const HomeScreen = ({ navigation }) => {
       </View>
     </View>
     </View>
-      <Text style={styles.title}>Products</Text>
+    <View style = {styles.subHeader}>
+      <Text style={styles.title}>OUR STORY</Text>
+      <Image
+        source={require('./assets/Listview.png')}
+        style={styles.image3}
+        resizeMode="contain"
+      />
+      <Image
+        source={require('./assets/Filter.png')}
+        style={styles.image4}
+        resizeMode="contain"
+      />
+      </View>
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}
@@ -68,7 +80,9 @@ const HomeScreen = ({ navigation }) => {
                 <Image source={require('./assets/add_circle.png')} style={styles.addIcon} />
               </TouchableOpacity>
             </View>
-            <Text>{item.name} - ${item.price}</Text>
+            <Text style = {{fontSize: 35, fontFamily: 'Hercules'}}>{item.name} </Text>
+            <Text style = {{color: 'gray', fontSize: 20, fontFamily: 'Hercules'}}> reversible angora cardigan </Text>
+            <Text style = {{fontSize: 30, color: 'maroon', fontFamily: 'Hercules'}}> ${item.price}</Text>
           </View>
         )}
       />
@@ -83,8 +97,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 35,
     marginBottom: 20,
+    fontFamily: 'Times New Roman'
   },
   product: {
     marginBottom: 20,
@@ -148,6 +163,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',  // Items will be displayed side by side
     },
     header: {
+        flexDirection: 'row',  // Items will be displayed side by side
+    },
+    subHeader: {
         flexDirection: 'row',  // Items will be displayed side by side
     }
 });
