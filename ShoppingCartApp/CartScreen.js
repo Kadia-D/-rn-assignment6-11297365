@@ -1,6 +1,6 @@
 // CartScreen.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CartScreen = () => {
@@ -33,15 +33,32 @@ const CartScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cart</Text>
+        <View style= {styles.header}>
+        <Image
+        source={require('./assets/Logo.png')}
+        style={styles.image2}
+        resizeMode="contain"
+      />
+      
+      <Image
+        source={require('./assets/Search.png')}
+        style={styles.image3}
+        resizeMode="contain"
+      />
+        </View>
+       <Image source = {require('./assets/image.png')}
+          style = {styles.screenshot}/>
       <FlatList
         data={cart}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.product}>
             <Image source={item.image} style={styles.image} />
-            <Text>{item.name} - ${item.price}</Text>
-            <Button title="Remove from Cart" onPress={() => removeFromCart(item)} />
+            <Text style = {{fontSize: 35, fontFamily: 'Hercules'}}>{item.name}</Text>
+            <Text style = {{fontSize: 30, color: 'maroon', fontFamily: 'Hercules'}}> ${item.price}</Text>
+            <TouchableOpacity style={styles.addButton} onPress={() =>removeFromCart(item)}>
+                <Image source={require('./assets/remove.png')} style={styles.addIcon} />
+              </TouchableOpacity>
           </View>
         )}
       />
@@ -53,14 +70,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    
   },
   title: {
-    fontSize: 24,
+    fontSize: 40,
     marginBottom: 20,
   },
   product: {
-    marginBottom: 10,
+    marginBottom: 30,
+    
   },
+  header: {
+    flex: 1,
+    justifyContent: 'flex-start', // Align items at the top
+    alignItems: 'flex-start', // Align items at the start (left)
+    padding: 20,
+    marginBottom: 40,
+  },
+  image2: {
+    width: 130,
+    height: 150,
+    marginLeft: 80, // Adjust as needed to create space between images
+    marginTop: -80,
+  },
+  image3: {
+    width: 40,
+    height: 40,
+    marginLeft: 280,
+    marginTop: -100,
+    },
+    screenshot:{
+        marginLeft:1,
+        width: 380,
+        marginTop: -500,
+    }
 });
 
 export default CartScreen;
