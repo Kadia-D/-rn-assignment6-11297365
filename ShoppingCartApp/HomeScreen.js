@@ -70,6 +70,7 @@ const HomeScreen = ({ navigation }) => {
       />
       </View>
       <FlatList
+      numColumns={2}
         data={products}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
